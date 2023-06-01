@@ -16,28 +16,28 @@ This creates a localhost server on port 8080.
   Currently, when the server is started, the app runs a create table query in postgres inferred from the definition from the Students.java class.
 
 # Endpoints
-1) /
-    curl localhost:8080
+1) `/`   
+    `curl localhost:8080`   
   This is an endpoint to check if configuration works.
 
-2) /jdbc_insert
-    curl localhost:8080/jdbc_insert
-  This endpoint is implemented using JDBC connection.
+2) `/jdbc_insert`   
+    `curl localhost:8080/jdbc_insert`   
+  This endpoint is implemented using JDBC.   
   This inserts a row into the students table in the database provided in the URL in application.properties file.
 
-3) /jpa_select
-    curl localhost:8080/jpa_select
-  This endpoint is implemented using JPA.
+3) `/jpa_select`   
+    `curl localhost:8080/jpa_select`   
+  This endpoint is implemented using JPA.   
   This runs a count query against the students table and returns the number of rows in the table.
 
-4) /jpa_insert
-    curl localhost:8080/jpa_insert
-  This endpoint is implemented using JPA.
-  First, we create a student object and pass in the arguments for all attributes except "ID" which is the primary key because it is auto inferred.
+4) `/jpa_insert`   
+    `curl localhost:8080/jpa_insert`   
+  First, we create a student object and pass in the arguments for all attributes except "ID" which is the primary key because it is auto inferred.   
+  This endpoint is implemented using JPA.   
 
 
 # Decisions/Learnings
-1) I am using Maven instead of Gradle, seemed easier to get started.
+1) I am using Maven instead of Gradle, I was able to get Maven working with less debugging.
 2) I am using Lombok to not have to write getters and setters
 3) I am using JPA as an ORM to not have to write raw SQL statements.
 4) I am using Hibernate, as it takes cares few things, like, creating a table when it does not exist and I have defined it.
