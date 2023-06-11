@@ -24,6 +24,6 @@ public class HelloControllerTest {
 	public void jdbc_insert() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/jdbc_insert").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().string(equalTo("Inserted a static row into students tables")));
+				.andExpect(content().string(equalTo("Inserted a static row into students table")));
 	}
 }

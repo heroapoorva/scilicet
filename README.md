@@ -4,9 +4,12 @@ Code repo for Scilicet app for sparity
 # source for installation
 Currently setting up using this tutorial https://spring.io/guides/gs/spring-boot/#scratch
 
+# Dependencies
+Need to install Java, Maven and Postgres SQL
+Create a database in Postgres, create a username and password which the spring-boot is going to use to interact with psql. Update the URL, username and password in the src/main/resources/application.properties file
+
 # Usage
-Install dependencies like Java, Maven, Psql
-  Update database, user and password in the src/main/resources/application.properties file
+To start the server,   
   cd into the spring-boot directory and run
 
     ./mvnw spring-boot:run
@@ -14,6 +17,12 @@ Install dependencies like Java, Maven, Psql
 This creates a localhost server on port 8080.
   curl this at different endpoints to test different functionalities.
   Currently, when the server is started, the app runs a create table query in postgres inferred from the definition from the Students.java class.
+
+To run unit tests, go into the spring-boot directory and rune the command
+
+    mvn test
+
+To go to the swagger-ui 
 
 # Endpoints
 1) `/`   
@@ -35,6 +44,8 @@ This creates a localhost server on port 8080.
   First, we create a student object and pass in the arguments for all attributes except "ID" which is the primary key because it is auto inferred.   
   This endpoint is implemented using JPA.   
 
+5) /
+
 
 # Decisions/Learnings
 1) I am using Maven instead of Gradle, I was able to get Maven working with less debugging.
@@ -42,11 +53,10 @@ This creates a localhost server on port 8080.
 3) I am using JPA as an ORM to not have to write raw SQL statements.
 4) I am using Hibernate, as it takes cares few things, like, creating a table when it does not exist and I have defined it.
 5) I am using jakarta instead of javax to define Students. Javax caused issues with creating beans.
+6) I am using logging level at INFO. Setting it to trace blows up the size too much.
+7) I am currently logging to STDOUT and the logging directory.
 
 # TODOs
-1) Add logging. 
-  It was decided to use **logback**. https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-logging.html
-2) Add unit testing. 
-  Do we have minimum percentage requirements?
-3) Use Swagger API.
+1) Send logs to syslog.
+3) Use Swagger API.   
   Need to research this.
